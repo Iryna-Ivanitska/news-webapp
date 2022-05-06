@@ -6,4 +6,8 @@ $custom-typography: mat.define-typography-config($font-family: '"Montserrat", sa
 @include mat.core($custom-typography);
 
 html, body { height: 100%; }
-body { margin: 0; font-family: 'Montserrat', sans-serif; }
+body {
+  max-width: 1440px;
+  margin: 0 auto; 
+  font-family: 'Montserrat', sans-serif; 
+}

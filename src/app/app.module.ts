@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { ShortTextPipe } from './shared/pipes/short-text.pipe';
+import { AmountComponent } from './components/amount/amount.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ShortTextPipe } from './shared/pipes/short-text.pipe';
     HomeComponent,
     DetailsComponent,
     HeaderComponent,
+    AmountComponent,
     CardComponent,
     NewsBlockComponent,
     ShortTextPipe

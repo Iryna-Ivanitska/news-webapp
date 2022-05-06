@@ -1,0 +1,7 @@
+@import './../../shared/mixins.scss';
+
+.amount {
+  border-bottom: 1px solid #EAEAEA;
+  @include font(16px, 600, 20px);
+  padding-bottom: 5px;
+}

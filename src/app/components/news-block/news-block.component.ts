@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { INews } from './../../interfaces/news';
+import { NewsService } from 'src/app/services/news.service';
 
 @Component({
   selector: 'app-news-block',
@@ -7,12 +8,12 @@ import { INews } from './../../interfaces/news';
   styleUrls: ['./news-block.component.scss']
 })
 export class NewsBlockComponent implements OnInit {
-  @Input() news: INews[];
+  news: INews[];
 
-  constructor() { }
+  constructor(private newsService: NewsService) { }
 
   ngOnInit(): void {
-    console.log(this.news)
+    this.news = this.newsService.news
   }
 
 }
