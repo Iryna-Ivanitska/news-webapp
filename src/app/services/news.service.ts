@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { News } from './../interfaces/news';
+import { INews } from './../interfaces/news';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,8 +11,8 @@ export class NewsService {
 
   constructor(private http: HttpClient) { }
 
-  getNews(): Observable<News> {
-    return this.http.get<News>(`${this.BASE_URL}/articles?_limit=100`)
+  getNews(): Observable<INews[]> {
+    return this.http.get<INews[]>(`${this.BASE_URL}/articles?_limit=100`)
   }
 
 }

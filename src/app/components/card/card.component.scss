@@ -1,0 +1,49 @@
+@import './../../shared/mixins.scss';
+
+.card {
+  max-width: 400px;
+  height: 470px;
+  display: flex;
+  flex-direction: column;
+ 
+
+  &__img {
+    height: 217px;
+    object-fit: cover;
+  }
+
+  &__date {
+    @include font(14px, 400, 150%);
+    display: flex;
+    align-items: center;
+
+  }
+  
+
+  &__title {
+    @include font(24px, 400, 29px);
+   }
+
+  &__summery {
+    @include font(16px, 400, 150%);
+    margin: 0 16px;
+   }
+
+  &__more {
+    @include font(16px, 700, 150%);
+    margin: 0 16px;
+    align-self: flex-end;
+    margin-top: auto;
+
+    .link {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+   }
+}
+
+mat-icon {
+  height: 19px;
+  font-size: 19px;
+}

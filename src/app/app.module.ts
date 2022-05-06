@@ -7,6 +7,11 @@ import { DetailsComponent } from './pages/details/details.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CardComponent } from './components/card/card.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NewsBlockComponent } from './components/news-block/news-block.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { ShortTextPipe } from './shared/pipes/short-text.pipe';
 
 @NgModule({
   declarations: [
@@ -14,11 +19,16 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     DetailsComponent,
     HeaderComponent,
-    CardComponent
+    CardComponent,
+    NewsBlockComponent,
+    ShortTextPipe
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

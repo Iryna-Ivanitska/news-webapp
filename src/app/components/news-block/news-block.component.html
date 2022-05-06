@@ -1,0 +1,5 @@
+<div class="wrapper" *ngIf="news">
+  <div class="news" *ngFor="let item of news">
+    <app-card [card]="item"></app-card>
+  </div>
+</div>

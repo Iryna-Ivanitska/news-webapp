@@ -1,4 +1,4 @@
-export interface News {
+export interface INews {
     id: number,
     featured: boolean,
     title: string,
@@ -7,16 +7,16 @@ export interface News {
     newsSite: string,
     summary: string,
     publishedAt: string,
-    launches: [
-      {
-        id: string,
-        provider: string
-      }
-    ],
-    events: [
-      {
-        id: string,
-        provider: string
-      }
-    ]
+    launches: ILaunches[],
+    events: IEvents[]
+}
+
+interface ILaunches {
+  id: string,
+  provider: string
+}
+
+interface IEvents {
+  id: number,
+  provider: string
 }
