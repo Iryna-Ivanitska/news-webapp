@@ -13,6 +13,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { ShortTextPipe } from './shared/pipes/short-text.pipe';
 import { AmountComponent } from './components/amount/amount.component';
+import { StoreModule } from '@ngrx/store';
+import { NewsReducer } from './store/reducers/newsReducer';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { AmountComponent } from './components/amount/amount.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    StoreModule.forRoot(NewsReducer)
   ],
   providers: [],
   bootstrap: [AppComponent]

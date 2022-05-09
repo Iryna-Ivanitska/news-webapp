@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { INews } from './../../interfaces/news';
 import { NewsService } from 'src/app/services/news.service';
+import { Store } from '@ngrx/store';
+import { FetchNews, NewsActions } from 'src/app/store/actions/newsActions';
 
 @Component({
   selector: 'app-news-block',
@@ -10,10 +12,21 @@ import { NewsService } from 'src/app/services/news.service';
 export class NewsBlockComponent implements OnInit {
   news: INews[];
 
-  constructor(private newsService: NewsService) { }
+  constructor(private newsService: NewsService,
+              private store: Store) { 
+    // this.news$ = this.store.select('news')
+              }
 
   ngOnInit(): void {
-    this.news = this.newsService.news
+
+    this.store.subscribe((state) => console.log(state));
+    
+    this.newsService.getNews().subscribe( 
+      (response) => {
+        console.log(response)
+        this.store.dispatch(new FetchNews({news: response}))
+      }
+  );
   }
 
 }

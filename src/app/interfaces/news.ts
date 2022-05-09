@@ -7,6 +7,7 @@ export interface INews {
     newsSite: string,
     summary: string,
     publishedAt: string,
+    updatedAt: string,
     launches: ILaunches[],
     events: IEvents[]
 }
