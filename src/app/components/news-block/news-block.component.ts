@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { INews } from './../../interfaces/news';
 import { NewsService } from 'src/app/services/news.service';
+import { Store } from '@ngrx/store';
+import { FetchNews } from 'src/app/store/actions/newsActions';
+import { Observable } from 'rxjs';
+
+import * as fromNews from './../../store/index'
 
 @Component({
   selector: 'app-news-block',
@@ -8,12 +13,18 @@ import { NewsService } from 'src/app/services/news.service';
   styleUrls: ['./news-block.component.scss']
 })
 export class NewsBlockComponent implements OnInit {
-  news: INews[];
+  news$: Observable<INews[]>;
 
-  constructor(private newsService: NewsService) { }
-
+  constructor(private newsService: NewsService,
+              private store: Store<fromNews.State>) { 
+              }
+              
   ngOnInit(): void {
-    this.news = this.newsService.news
+    this.newsService.getNews().subscribe( 
+      (response) => {
+        this.store.dispatch(new FetchNews({news: response}))
+      });
+      this.news$ = this.store.select<INews[]>(fromNews.selectNewsList)
   }
 
 }

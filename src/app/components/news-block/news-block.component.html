@@ -1,5 +1,5 @@
-<div class="wrapper" *ngIf="news">
-  <div class="news" *ngFor="let item of news">
+<div class="wrapper">
+  <div class="news" *ngFor="let item of news$ | async">
     <app-card [card]="item"></app-card>
   </div>
 </div>

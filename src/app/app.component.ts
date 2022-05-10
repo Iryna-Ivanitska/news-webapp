@@ -8,16 +8,9 @@ import { NewsService } from './services/news.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public news: INews[];
-  isLoaded: boolean = false;
-
-  constructor(private newsService: NewsService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.newsService.getNews().subscribe( () =>{
-      this.news = this.newsService.news
-      this.isLoaded = true
-    }
-  );
+    
   }
 }
