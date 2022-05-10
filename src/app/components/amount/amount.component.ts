@@ -1,6 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { NewsService } from 'src/app/services/news.service';
 import { INews } from './../../interfaces/news';
+
+import * as fromNews from './../../store/index'
 
 @Component({
   selector: 'app-amount',
@@ -8,13 +12,14 @@ import { INews } from './../../interfaces/news';
   styleUrls: ['./amount.component.scss']
 })
 export class AmountComponent implements OnInit {
-  public length: number;
+  public length$: Observable<number>;
   @Input() news: INews[]
 
-  constructor(private newsService: NewsService) { }
+  constructor(private newsService: NewsService,
+              private store: Store<fromNews.State>) { }
 
   ngOnInit(): void {
-    this.length = this.newsService.news.length;
+    this.length$ = this.store.select<number>(fromNews.getCount);
   }
 
 }

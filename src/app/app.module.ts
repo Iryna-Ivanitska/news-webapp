@@ -14,7 +14,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { ShortTextPipe } from './shared/pipes/short-text.pipe';
 import { AmountComponent } from './components/amount/amount.component';
 import { StoreModule } from '@ngrx/store';
-import { NewsReducer } from './store/reducers/newsReducer';
+import { reducers } from './store';
+import { MatInputModule } from '@angular/material/input';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { NewsReducer } from './store/reducers/newsReducer';
     BrowserAnimationsModule,
     MatCardModule,
     MatIconModule,
-    StoreModule.forRoot(NewsReducer)
+    MatInputModule,
+    StoreModule.forRoot(reducers),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

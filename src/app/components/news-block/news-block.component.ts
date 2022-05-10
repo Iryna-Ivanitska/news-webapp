@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { INews } from './../../interfaces/news';
 import { NewsService } from 'src/app/services/news.service';
 import { Store } from '@ngrx/store';
-import { FetchNews, NewsActions } from 'src/app/store/actions/newsActions';
+import { FetchNews } from 'src/app/store/actions/newsActions';
+import { Observable } from 'rxjs';
+
+import * as fromNews from './../../store/index'
 
 @Component({
   selector: 'app-news-block',
@@ -10,23 +13,18 @@ import { FetchNews, NewsActions } from 'src/app/store/actions/newsActions';
   styleUrls: ['./news-block.component.scss']
 })
 export class NewsBlockComponent implements OnInit {
-  news: INews[];
+  news$: Observable<INews[]>;
 
   constructor(private newsService: NewsService,
-              private store: Store) { 
-    // this.news$ = this.store.select('news')
+              private store: Store<fromNews.State>) { 
               }
-
+              
   ngOnInit(): void {
-
-    this.store.subscribe((state) => console.log(state));
-    
     this.newsService.getNews().subscribe( 
       (response) => {
-        console.log(response)
         this.store.dispatch(new FetchNews({news: response}))
-      }
-  );
+      });
+      this.news$ = this.store.select<INews[]>(fromNews.selectNewsList)
   }
 
 }

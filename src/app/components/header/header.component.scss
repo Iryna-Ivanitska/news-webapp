@@ -1,0 +1,35 @@
+@import './../../shared/mixins.scss';
+
+h2 {
+  color: #363636;
+  @include font(16px, 600, 20px);
+}
+
+.search {
+  width: 600px;
+  display: flex;
+  align-items: center;
+  
+
+  &__input {
+    @include font(16px, 400, 150%);
+    color: #575757;
+  }
+  
+  &__field {
+    width: 100%;
+    border: 1px solid #EAEAEA;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
+  }
+
+  &__icon {
+    margin-right: 20px;
+  }
+
+}
+
+:host ::ng-deep .search .mat-form-field-wrapper{
+  margin: 0 !important;
+  padding: 0;
+ }
