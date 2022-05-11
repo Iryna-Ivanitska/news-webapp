@@ -1,1 +1,17 @@
-<p>details works!</p>
+<div class="wrapper" *ngIf="newsItem">
+  <div class="bg-img">
+    <img src={{newsItem.imageUrl}}>
+  </div>
+    <div class="info">
+      <h1 class="info__title">{{newsItem.title}}</h1>
+      <div class="info__text">{{newsItem.summary}}</div>
+      <div class="link">
+        <a href={{newsItem.url}} target="_blank">Read full article</a>
+      </div>
+    </div>
+    <div class="link back">
+      <a routerLink="">
+        <mat-icon aria-hidden="true">navigate_before</mat-icon>
+        Go to homepage</a>
+  </div>
+</div>

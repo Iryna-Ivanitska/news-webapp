@@ -8,6 +8,6 @@
     <p>{{card.summary | shortText:100}}</p>
   </mat-card-content>
   <mat-card-actions class="card__more">
-    <a class="link">Read more <mat-icon>keyboard_arrow_right</mat-icon></a>
+    <a class="link" routerLink="/news/{{card.id}}">Read more <mat-icon>keyboard_arrow_right</mat-icon></a>
   </mat-card-actions>
 </mat-card>

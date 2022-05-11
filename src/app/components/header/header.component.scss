@@ -1,7 +1,8 @@
 @import './../../shared/mixins.scss';
+@import './../../shared/variables.scss';
 
 h2 {
-  color: #363636;
+  color: $fontColor;
   @include font(16px, 600, 20px);
 }
 

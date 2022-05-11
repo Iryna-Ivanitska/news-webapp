@@ -19,7 +19,7 @@ export function NewsReducer(state: IState = initialState, action: ActionsUnion):
         ...state,
         news: action.payload.news,
         count: action.payload.news.length
-      }
+      } 
     default: return {...state}
   }
 }

@@ -37,7 +37,7 @@ import { AppRoutingModule } from './app-routing.module';
     MatIconModule,
     MatInputModule,
     StoreModule.forRoot(reducers),
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

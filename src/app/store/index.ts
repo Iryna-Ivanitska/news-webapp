@@ -19,4 +19,10 @@ export const getCount = createSelector(
   selectNews,
   (state: NEWS.IState) => state.count
 );
+export const getNewsById = (newsId: number) => createSelector(
+  selectNews,
+  (state: NEWS.IState) => state.news.filter(news => news.id === newsId)
+);
+
+
 
