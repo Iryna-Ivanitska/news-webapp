@@ -1,7 +1,7 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { debounceTime, distinctUntilChanged, fromEvent, map, Observable, Subscription } from 'rxjs';
-import { SearchNews } from 'src/app/store/actions/newsActions';
+import { AddSearchKeywords, SearchNews } from 'src/app/store/actions/newsActions';
 import { INews } from './../../interfaces/news';
 
 import * as fromNews from './../../store/index'
@@ -11,9 +11,9 @@ import * as fromNews from './../../store/index'
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   @ViewChild('searchValue', { static: true }) searchInput: ElementRef;
-  sub = new Subscription;
+  private sub = new Subscription;
   news: INews[]
   constructor(private store: Store<fromNews.State>) { }
 
@@ -36,15 +36,16 @@ export class HeaderComponent implements OnInit {
   search(text: string) {
     if (text == '') {
       this.store.dispatch(new SearchNews({news: this.news}))
+      this.store.dispatch(new AddSearchKeywords({keywords: []}))
       return;
     }
-    let arrayOfWords = text.toLowerCase().split(' ');
-    console.log(arrayOfWords)
+    let arrayOfWords = text.toLowerCase().trim().split(' ');
+    this.store.dispatch(new AddSearchKeywords({keywords: arrayOfWords}))
     const filtered = this.news.map( item => {
       let points = 0;
 
       arrayOfWords.forEach( entry => {
-        points += item.title.toLowerCase().split(' ').filter(w => w == entry).length * 2
+        points += item.title.toLowerCase().split(' ').filter(w => w == entry).length * 100
         points += item.summary.toLowerCase().split(' ').filter(w => w == entry).length
       })
 
@@ -53,7 +54,10 @@ export class HeaderComponent implements OnInit {
     .filter(el => el.points != 0)
     .sort((a, b) => b.points - a.points)
 
-    console.log(filtered)
     this.store.dispatch(new SearchNews({news: filtered}))
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe()
   }
 }

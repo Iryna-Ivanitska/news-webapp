@@ -17,6 +17,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './store';
 import { MatInputModule } from '@angular/material/input';
 import { AppRoutingModule } from './app-routing.module';
+import { HighlightTextPipe } from './shared/pipes/highlight-text.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AppRoutingModule } from './app-routing.module';
     AmountComponent,
     CardComponent,
     NewsBlockComponent,
-    ShortTextPipe
+    ShortTextPipe,
+    HighlightTextPipe
   ],
   imports: [
     BrowserModule,

@@ -2,10 +2,10 @@
   <img mat-card-image class="card__img" src={{card.imageUrl}} alt={{card.title}}>
   <mat-card-header>
     <mat-card-subtitle class="card__date"><mat-icon>calendar_today</mat-icon>{{card.publishedAt | date : 'longDate'}}</mat-card-subtitle>
-    <mat-card-title class="card__title">{{card.title}}</mat-card-title>
+    <mat-card-title class="card__title" [innerHTML]="card.title | highlightText:keywords"></mat-card-title>
   </mat-card-header>
   <mat-card-content class="card__summery">
-    <p>{{card.summary | shortText:100}}</p>
+    <p [innerHTML]="card.summary | highlightText:keywords | shortText:100"></p>
   </mat-card-content>
   <mat-card-actions class="card__more">
     <a class="link" routerLink="/news/{{card.id}}">Read more <mat-icon>keyboard_arrow_right</mat-icon></a>
