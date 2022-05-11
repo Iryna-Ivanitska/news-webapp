@@ -29,6 +29,16 @@
   border-radius: 5px;
   padding: 0 75px 50px 75px;
 
+  @include tablet {
+    max-width: 700px;
+    padding: 0 25px 15px 25px;
+  }
+
+  @include mobile {
+    max-width: 400px;
+    padding: 0 15px 10px 15px;
+  }
+
   &__title {
     @include font(24px, 400, 29px);
     color: $fontColor;

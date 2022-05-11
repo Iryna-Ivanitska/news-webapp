@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { INews } from './../interfaces/news';
-import { Observable, tap } from 'rxjs';
+import { Observable, tap, catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,8 @@ export class NewsService {
 
   getNews(): Observable<INews[]> {
     return this.http.get<INews[]>(`${this.BASE_URL}/articles?_limit=50`).pipe(
-      tap(news => this.news = news)
+      tap(news => this.news = news),
+      catchError( err => throwError(() => new Error(`Error: ${err}`)))
     )
   }
 
