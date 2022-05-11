@@ -16,7 +16,7 @@ export class NewsBlockComponent implements OnInit {
   constructor(private store: Store<fromNews.State>) {}
               
   ngOnInit(): void {
-      this.news$ = this.store.select<INews[]>(fromNews.selectNewsList)
+      this.news$ = this.store.select<INews[]>(fromNews.selectFilterNews)
   }
 
 }

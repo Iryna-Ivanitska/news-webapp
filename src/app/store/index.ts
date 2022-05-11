@@ -23,6 +23,11 @@ export const getNewsById = (newsId: number) => createSelector(
   selectNews,
   (state: NEWS.IState) => state.news.filter(news => news.id === newsId)
 );
+export const selectFilterNews = createSelector(
+  selectNews,
+  (state: NEWS.IState) => state.filteredNews
+);
+
 
 
 

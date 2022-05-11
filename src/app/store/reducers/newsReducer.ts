@@ -4,12 +4,14 @@ import { ActionsUnion, NewsActions } from '../actions/newsActions';
 
 export interface IState {
   news: INews[],
-  count: number
+  count: number,
+  filteredNews: INews[]
 }
 
 const initialState: IState = {
   news: [],
-  count: 0
+  count: 0,
+  filteredNews: []
 }
 
 export function NewsReducer(state: IState = initialState, action: ActionsUnion): IState {
@@ -18,6 +20,13 @@ export function NewsReducer(state: IState = initialState, action: ActionsUnion):
       return {
         ...state,
         news: action.payload.news,
+        filteredNews: action.payload.news,
+        count: action.payload.news.length
+      } 
+    case NewsActions.FilterNews: 
+      return {
+        ...state,
+        filteredNews: action.payload.news,
         count: action.payload.news.length
       } 
     default: return {...state}
