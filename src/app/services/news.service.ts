@@ -7,7 +7,7 @@ import { Observable, tap, catchError, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class NewsService {
-  BASE_URL = "https://api.spaceflightnewsapi.net/v3"
+  BASE_URL = "https://api.spaceflightnewsapi.net/v4"
   news: INews[] = []
 
   constructor(private http: HttpClient) { }
