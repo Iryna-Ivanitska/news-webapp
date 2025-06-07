@@ -3,21 +3,21 @@ export interface INews {
     featured: boolean,
     title: string,
     url: string,
-    imageUrl: string,
-    newsSite: string,
+    image_url: string,
+    news_site: string,
     summary: string,
-    publishedAt: string,
-    updatedAt: string,
+    published_at: string,
+    updated_at: string,
     launches: ILaunches[],
     events: IEvents[]
 }
 
 interface ILaunches {
-  id: string,
+  launch_id: string,
   provider: string
 }
 
 interface IEvents {
-  id: number,
+  event_id: number,
   provider: string
 }
